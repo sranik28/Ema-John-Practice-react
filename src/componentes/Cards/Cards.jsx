@@ -1,18 +1,26 @@
-import React from 'react';
-
+import React, { useEffect, useState } from 'react';
+import Product from '../product/product';
 const Cards = () => {
+    const [card, setCard] = useState([]);
+    useEffect(() => {
+        const loadDAta = async () => {
+            const res = await fetch("../../../fakeData/products.json");
+            const data = await res.json();
+            setCard(data)
+        }
+        loadDAta()
+    }, [])
     return (
-        <div className="grid grid-cols-3">
-            <div className="card w-96 bg-base-100 shadow-xl">
-                <figure><img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-                <div className="card-body">
-                    <h2 className="card-title">Shoes!</h2>
-                    <p>If a dog chews shoes whose shoes does he choose?</p>
-                    <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Buy Now</button>
-                    </div>
-                </div>
-            </div>           
+        <div className='flex w-[1400px] mx-auto gap-6 '>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-[1200px] mx-auto '>
+                {
+                    card.map(singleData => <Product singleData={singleData} key={singleData.id}></Product>)
+                }
+
+            </div>
+            <div className='w-[300px] text-center bg-orange-200 '>
+                <h1 className='font-bold text-3xl my-8'>Oder Summary</h1>
+            </div>
         </div>
     );
 };
