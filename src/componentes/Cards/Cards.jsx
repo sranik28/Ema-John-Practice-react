@@ -10,16 +10,21 @@ const Cards = () => {
         }
         loadDAta()
     }, [])
+
+    const handleAddToCard = () => {
+        console.log("sjd")
+    }
+
     return (
-        <div className='flex w-[1400px] mx-auto gap-6 '>
+        <div className='flex w-[1400px] mx-auto gap-6  '>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-[1200px] mx-auto '>
                 {
-                    card.map(singleData => <Product singleData={singleData} key={singleData.id}></Product>)
+                    card.map(singleData => <Product singleData={singleData} key={singleData.id} handleAddToCard={handleAddToCard}></Product>)
                 }
 
             </div>
             <div className='w-[300px] text-center bg-orange-200 '>
-                <h1 className='font-bold text-3xl my-8'>Oder Summary</h1>
+                <h1 className='font-bold text-3xl my-8'>Oder </h1>
             </div>
         </div>
     );
