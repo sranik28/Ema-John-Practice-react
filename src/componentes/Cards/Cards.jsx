@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { addToDb } from '../../../utilities/fakedb';
 import Order from '../OrderSummary/Order';
 import Product from '../product/product';
 const Cards = () => {
@@ -18,7 +19,8 @@ const Cards = () => {
     const handleAddToCard = (singleData) => {
         // shop.push(singleData)
         const newProduct = [...shop, singleData];
-        setShop(newProduct)
+        setShop(newProduct);
+        addToDb(singleData.id)
     }
 
     return (
