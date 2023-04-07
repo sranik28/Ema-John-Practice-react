@@ -1,7 +1,8 @@
 import React from 'react';
 // import { loadConfigFromFile } from 'vite';
+import { AiOutlineDelete } from 'react-icons/ai';
 
-const Order = ({ Order }) => {
+const Order = ({ Order, handelClearCart, children }) => {
     // const Order = props.Order
 
     let totalPrice = 0;
@@ -29,6 +30,11 @@ const Order = ({ Order }) => {
             <p className='px-5 my-3'>Total Shipping:$ {totalShipping}</p>
             <p className='px-5 my-3'>Tax:$ {tex.toFixed(2)}</p>
             <h1 className="text-xl font-semibold px-5 my-3">Grand Total:$ {grandTotal.toFixed(2)}</h1>
+            <button onClick={handelClearCart} className='flex justify-between w-[95%] items-center bg-red-400 p-2 rounded mx-auto'>
+                <span>clear cart</span>
+                <AiOutlineDelete className='h-6 w-6'></AiOutlineDelete>
+            </button>
+            {children}
         </div>
     );
 };

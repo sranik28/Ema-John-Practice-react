@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { addToDb, getShoppingCart } from '../../../utilities/fakedb';
+import { addToDb, deleteShoppingCart, getShoppingCart } from '../../../utilities/fakedb';
 import Order from '../OrderSummary/Order';
 import Product from '../product/product';
 import "./Cards.css"
+import { AiOutlineArrowRight } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
 const Cards = () => {
     const [card, setCard] = useState([]);
 
@@ -54,6 +56,10 @@ const Cards = () => {
         setShop(newProduct);
         addToDb(singleData.id)
     }
+    const handelClearCart = () => {
+        setShop([]);
+        deleteShoppingCart()
+    }
 
     return (
         <div className=' card-container  '>
@@ -65,7 +71,15 @@ const Cards = () => {
                 </div>
             </div>
             <div className='w-[300px] h-96 mt-2  bg-orange-200 '>
-                <Order Order={shop}></Order>
+                <Order Order={shop}
+                    handelClearCart={handelClearCart}>
+                    <Link to="/orders">
+                    <button className='btn-container'>
+                        <span>Review Order</span>
+                        <AiOutlineArrowRight className='w-6 h-6'></AiOutlineArrowRight>
+                    </button>
+                    </Link>
+                </Order>
             </div>
         </div>
     );
