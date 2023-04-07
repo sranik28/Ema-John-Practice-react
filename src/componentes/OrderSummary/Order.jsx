@@ -27,7 +27,7 @@ const Order = ({ Order }) => {
             <p className='px-5 my-3'>Selected Items:{quantity}</p>
             <p className='px-5 my-3'>Total Price:$ {totalPrice}</p>
             <p className='px-5 my-3'>Total Shipping:$ {totalShipping}</p>
-            <p className='px-5 my-3'>Tax:& {tex.toFixed(2)}</p>
+            <p className='px-5 my-3'>Tax:$ {tex.toFixed(2)}</p>
             <h1 className="text-xl font-semibold px-5 my-3">Grand Total:$ {grandTotal.toFixed(2)}</h1>
         </div>
     );

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { addToDb, getShoppingCart } from '../../../utilities/fakedb';
 import Order from '../OrderSummary/Order';
 import Product from '../product/product';
+import "./Cards.css"
 const Cards = () => {
     const [card, setCard] = useState([]);
 
@@ -14,7 +15,7 @@ const Cards = () => {
             setCard(data)
         }
         loadDAta()
-    }, [])
+    }, []);
 
     useEffect(() => {
         const strodeCard = getShoppingCart();
@@ -32,7 +33,7 @@ const Cards = () => {
             }
         }
         setShop(addCard)
-    }, [card])
+    }, [card]);
 
     const handleAddToCard = (singleData) => {
 
@@ -55,13 +56,15 @@ const Cards = () => {
     }
 
     return (
-        <div className='lg:flex lg:w-[1400px] mx-auto gap-6 w-72  '>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-[1200px] mx-auto '>
-                {
-                    card.map(singleData => <Product singleData={singleData} key={singleData.id} handleAddToCard={handleAddToCard} ></Product>)
-                }
+        <div className=' card-container  '>
+            <div className='col-span-3'>
+                <div className='grid md:grid-cols-3 gap-4'>
+                    {
+                        card.map(singleData => <Product singleData={singleData} key={singleData.id} handleAddToCard={handleAddToCard} ></Product>)
+                    }
+                </div>
             </div>
-            <div className='w-[300px] h-96   bg-orange-200 '>
+            <div className='w-[300px] h-96 mt-2  bg-orange-200 '>
                 <Order Order={shop}></Order>
             </div>
         </div>
