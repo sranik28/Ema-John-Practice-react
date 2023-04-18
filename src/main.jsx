@@ -12,35 +12,41 @@ import Inventory from './Pages/Inventory';
 import Login from './Pages/Login';
 import CardProductLoader from './componentes/CardProductLoder/CardProductLoder';
 import CheckOut from './componentes/CheckOut/CheckOut';
-const router=createBrowserRouter([
+import SignUp from './Pages/SignUp';
+import { AuthProvider } from './Context/Context';
+const router = createBrowserRouter([
   {
-    path:"/",
-    element:<Home/>,
-    children:[
+    path: "/",
+    element: <Home />,
+    children: [
       {
-        path:"/",
-        element:<Cards/>
+        path: "/",
+        element: <Cards />
       },
       {
-        path:"shop",
-        element:<Cards/>
+        path: "shop",
+        element: <Cards />
       },
       {
-        path:"/orders",
-        element:<Orders/>,
+        path: "/orders",
+        element: <Orders />,
         loader: CardProductLoader
       },
       {
-        path:"/Inventory",
-        element:<Inventory/>
+        path: "/inventory",
+        element: <Inventory />
       },
       {
-        path:"/CheckOut",
-        element:<CheckOut/>
+        path: "/checkOut",
+        element: <CheckOut />
       },
       {
-        path:"/Login",
-        element:<Login/>
+        path: "/login",
+        element: <Login />
+      },
+      {
+        path: "/signUp",
+        element: <SignUp />
       },
     ]
   }
@@ -48,6 +54,8 @@ const router=createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-   <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>,
 )

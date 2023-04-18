@@ -9,7 +9,7 @@ const Product = (props) => {
     // props.handleAddToCard
 
     return (
-        <div className="card w-full h-full bg-base-100 border border-orange-500 rounded mt-2">
+        <div className="card w-full h-full bg-base-100 border border-orange-500 rounded mt-2 ">
             <figure><img className='w-full' src={img} alt="No Img" /></figure>
             <div className="card-body">
                 <h2 className="text-xl font-bold">{name}</h2>

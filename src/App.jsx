@@ -6,7 +6,7 @@ import Header from './componentes/Header/Header'
 import Cards from './componentes/Cards/Cards'
 
 function App() {
-  const [count, setCount] = useState(0)
+ 
 
   return (
     <div className="App">
