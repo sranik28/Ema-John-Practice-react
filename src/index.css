@@ -2,9 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-.card-container{
-    @apply  max-w-[1200px] mx-auto gap-6  grid md:grid-cols-4 
+.card-container {
+    @apply max-w-[1200px] mx-auto gap-6 grid md:grid-cols-4
 }
-.btn-container{
+
+.btn-container {
     @apply flex justify-between items-center w-[95%] mx-auto bg-[#FF9900] p-2 mt-2 rounded
+}
+
+.selected {
+    @apply bg-[#FF9900] px-5 py-2 rounded-md
 }

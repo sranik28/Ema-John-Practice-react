@@ -5,8 +5,10 @@ import { Outlet } from 'react-router-dom';
 const Home = () => {
     return (
         <div>
-            <Header/>
-            <Outlet/>
+            <div className='sticky top-0 z-50'>
+                <Header />
+            </div>
+            <Outlet />
         </div>
     );
 };

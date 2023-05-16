@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
 import { useDataGlobally } from '../Context/Context';
 
 const Login = () => {
 
     const { singInUser } = useDataGlobally()
-    const [error,setError]=useState("");
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
+    const location = useLocation();
+    console.log(location)
+    const from = location.state?.from?.pathname || "/"
 
     const logInFromHandel = (e) => {
         e.preventDefault()
@@ -21,6 +25,7 @@ const Login = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser)
                 e.target.reset()
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 setError(error.message)
@@ -43,8 +48,8 @@ const Login = () => {
                 <p className='text-red-600 text-xl'>{error}</p>
 
                 <small><p className='my-5'>or</p></small>
-                <button className='flex items-center gap-2 w-[95%] mx-auto rounded-md border border-slate-400 mb-5 '><FcGoogle className='w-10 h-10' />
-                    <span className='text-center'>Continue with Google
+                <button className='flex items-center justify-center gap-2 w-[95%] mx-auto rounded-md border border-slate-400 mb-5 '><FcGoogle className='w-10 h-10' />
+                    <span>Continue with Google
                     </span>
                 </button>
             </form>

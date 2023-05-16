@@ -14,6 +14,7 @@ import CardProductLoader from './componentes/CardProductLoder/CardProductLoder';
 import CheckOut from './componentes/CheckOut/CheckOut';
 import SignUp from './Pages/SignUp';
 import { AuthProvider } from './Context/Context';
+import PrivetRout from './PrivetRoute/PrivetRout';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -21,7 +22,8 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Cards />
+        element: <Cards />,
+        loader: () => fetch('http://localhost:5000/totalProducts')
       },
       {
         path: "shop",
@@ -34,11 +36,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/inventory",
-        element: <Inventory />
+        element: <PrivetRout><Inventory /></PrivetRout>
       },
       {
         path: "/checkOut",
-        element: <CheckOut />
+        element: <PrivetRout><CheckOut /></PrivetRout>
       },
       {
         path: "/login",

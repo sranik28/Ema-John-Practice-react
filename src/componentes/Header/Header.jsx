@@ -33,7 +33,7 @@ const Header = () => {
                     <NavLink className='mr-10 hover:text-orange-400' to='/inventory ' onClick={() => SetToggle(false)}> Inventory</NavLink>
                     <NavLink className='mr-10 hover:text-orange-400' to='/login' onClick={() => SetToggle(false)}>Login</NavLink>
                     <NavLink className='mr-10 hover:text-orange-400' to='/signUp'>SignUp</NavLink>
-                    {user && <span>welcome {user.email} <button onClick={handelSignOut}>Sign Out</button></span>}
+                    {user && <span> {user.email} <button onClick={handelSignOut} className='px-5 py-2 bg-[#a88f6a] rounded-md'>Sign Out</button></span>}
                 </ul>
             </div>
         </div>

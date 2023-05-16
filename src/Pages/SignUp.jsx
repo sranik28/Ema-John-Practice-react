@@ -7,7 +7,7 @@ import { useDataGlobally } from '../Context/Context';
 
 const SignUp = () => {
 
-const{createUser}=useDataGlobally()
+    const { createUser } = useDataGlobally()
 
     const [error, setError] = useState("")
 
@@ -17,7 +17,7 @@ const{createUser}=useDataGlobally()
         const email = e.target.email.value;
         const password = e.target.password.value;
         const confirm = e.target.confirm.value;
-        console.log(email,password,confirm)
+        console.log(email, password, confirm)
         setError("")
         if (password !== confirm) {
             setError("Your password did not match")
@@ -29,14 +29,14 @@ const{createUser}=useDataGlobally()
         }
 
         createUser(email, password)
-        .then(result=>{
-            const loggedUser=result.user;
-            console.log(loggedUser)
-        })
-        .catch(error=>{
-            setError(error.message)
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser)
+            })
+            .catch(error => {
+                setError(error.message)
 
-        })
+            })
 
     }
 
